@@ -9,7 +9,7 @@
         android:layout_height="wrap_content">
 
         <Toolbar
-            android:id="@+id/tollbarMain"
+            android:id="@+id/toolbarMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
             <ImageView
@@ -25,10 +25,10 @@
 
             <fragment
                 android:id="@+id/fragContent"
+                android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@id/bnvMenu"
-                android:name="androidx.navigation.fragment.NavHostFragment"
                 app:navGraph="@navigation/nav_graph"
                 app:defaultNavHost="true"/>
 
