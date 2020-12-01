@@ -13,6 +13,10 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.type.LatLng
+import com.google.android.gms.maps.model.MapStyleOptions
+import com.google.android.gms.maps.model.Marker
+
+import androidx.navigation.fragment.findNavController
 
 import com.platzi.conf.model.Ubication
 
@@ -21,7 +25,7 @@ import com.platzi.conf.R
 /**
  * A simple [Fragment] subclass.
  */
-class UbicationFragment : Fragment() {
+class UbicationFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,8 +53,14 @@ class UbicationFragment : Fragment() {
         val centerMark = com.google.android.gms.maps.model.LatLng(ubication.latitude, ubication.longitude)
         val markerOptions = MarkerOptions()
         markerOptions.position(centerMark)
-        markerOptions.title("Jair conf")
+        markerOptions.title("Coferencia")
 
+        googleMap?.setMapStyle(MapStyleOptions.loadRawResourceStyle(context, R.raw.custom_map))
+    }
+
+    override fun onMarkerClick(p0: Marker?): Boolean {
+        findNavController().navigate(R.id.ubicationDetailFragmentDialog)
+        return true
 
     }
 
